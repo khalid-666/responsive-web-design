@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Sound Product Landing Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            padding-top: 90px; 
+        }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 1000;
+        }
+
+        #header-img {
+            max-height: 50px;
+            width: auto;
+        }
+
+        #nav-bar {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #444;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            margin-left: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff4a5a;
+        }
+
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            padding-top: 2rem;
+        }
+
+        #hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        #hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+
+        #form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 2rem auto 0 auto;
+        }
+
+        #email {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        #submit {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #ff4a5a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #submit:hover {
+            background-color: #e03b4a;
+        }
+
+ 
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        #video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .feature-item h3 {
+            margin-bottom: 0.5rem;
+            color: #ff4a5a;
+        }
+
+        @media (min-width: 768px) {
+            .features-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            #form {
+                flex-direction: row;
+                max-width: 500px;
+            }
+
+            #submit {
+                width: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+
+        <img id="header-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150" alt="Premium Audio Brand Minimalist Grid Logo Asset">
+        
+
+        <nav id="nav-bar">
+
+            <a class="nav-link" href="#features">Features</a>
+            <a class="nav-link" href="#showcase">Showcase</a>
+            <a class="nav-link" href="#subscribe">Newsletter</a>
+        </nav>
+
+    </header>
+
+    <main class="container">
+
+        <section id="features">
+            <h2>Why Choose Our Sound Solution?</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>Premium Audio</h3>
+                    <p>Experience studio-grade listening quality dynamically optimized by algorithmic telemetry pipelines.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>High Battery Life</h3>
+                    <p>Enjoy up to 40 consecutive baseline execution playback hours on a single 15-minute quick charge matrix.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Smart ANC</h3>
+                    <p>Adaptive noise cancellation isolating ambient structural sonic sound frequencies instantly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="showcase">
+            <h2>See It In Action</h2>
+            <div class="video-wrapper">
+                <iframe id="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Product Video Presentation"></iframe>
+            </div>
+        </section>
+
+        <section id="subscribe">
+            <div id="hero">
+                <h2>Sound Uncompromised.</h2>
+                <p>Register below to receive release notifications and access exclusive promotional pricing channels.</p>
+            </div>
+
+            <form id="form" action="https://www.freecodecamp.org/email-submit">
+
+                <input id="email" type="email" name="email" placeholder="Enter your email address" required>
+
+                <input id="submit" type="submit" value="Get Started">
+                
+            </form>
+        </section>
+
+    </main>
+
+</body>
+</html>
