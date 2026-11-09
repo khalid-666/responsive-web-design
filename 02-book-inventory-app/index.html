@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing Cards Grid</title>
+    <style>
+        body {
+            background-color: #1a4314; /* Casino table green */
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            margin: 0;
+        }
+
+        /* Requirements 1, 8, 9, 10, 11: Main parent element styling rules */
+        #playing-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Requirements 3, 12, 13: Core card dimensional constraints and flex structure */
+        .card {
+            width: 150px;
+            height: 220px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Requirement 14: Left column content alignment rule */
+        .left {
+            align-self: flex-start;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Requirements 15, 17, 18: Middle lane alignment, inner flex layout, and direction tracking */
+        .middle {
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 32px;
+        }
+
+        /* Requirement 16: Right column alignment rules */
+        .right {
+            align-self: flex-end;
+            font-size: 20px;
+            font-weight: bold;
+            transform: rotate(180deg); /* Optional visual utility flip for classic card styling */
+        }
+
+        /* Decorative suit colors */
+        .red-suit { color: #d11a2a; }
+        .black-suit { color: #000000; }
+    </style>
+</head>
+<body>
+
+    <!-- Requirement 1: Main parent deck root element -->
+    <main id="playing-cards">
+
+        <!-- Requirement 2: Card Item 1 (Ace of Hearts) -->
+        <div class="card red-suit">
+            <!-- Requirements 4, 5, 6, 7: Exactly three designated layout child elements -->
+            <div class="left">A &hearts;</div>
+            <div class="middle">&hearts;</div>
+            <div class="right">A &hearts;</div>
+        </div>
+
+        <!-- Requirement 2: Card Item 2 (Three of Spades) -->
+        <div class="card black-suit">
+            <!-- Requirements 4, 5, 6, 7: Exactly three designated layout child elements -->
+            <div class="left">3 &spades;</div>
+            <div class="middle">
+                <div>&spades;</div>
+                <div>&spades;</div>
+                <div>&spades;</div>
+            </div>
+            <div class="right">3 &spades;</div>
+        </div>
+
+        <!-- Requirement 2: Card Item 3 (Two of Diamonds) -->
+        <div class="card red-suit">
+            <!-- Requirements 4, 5, 6, 7: Exactly three designated layout child elements -->
+            <div class="left">2 &diams;</div>
+            <div class="middle">
+                <div>&diams;</div>
+                <div>&diams;</div>
+            </div>
+            <div class="right">2 &diams;</div>
+        </div>
+
+    </main>
+
+</body>
+</html>
