@@ -1,198 +1,235 @@
-<!DOCTYPE html>
+!DOCT<YPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Documentation Matrix</title>
+    <title>Premium Sound Product Landing Page</title>
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333333;
-            background-color: #fcfcfc;
-            display: flex;
-            flex-direction: column;
+            background-color: #f9f9f9;
+            color: #333;
+            padding-top: 90px; 
         }
 
-        #navbar {
+        #header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 300px;
-            height: 100vh;
+            width: 100%;
+            height: 75px;
             background-color: #ffffff;
-            border-right: 2px solid #e2e8f0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: flex;
-            flex-direction: column;
-            overflow-y: auto;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 1000;
         }
 
-        #navbar header {
-            font-size: 1.5rem;
-            font-weight: bold;
-            padding: 1.5rem 1rem;
-            border-bottom: 1px solid #e2e8f0;
-            color: #1a202c;
+        #header-img {
+            max-height: 50px;
+            width: auto;
+        }
+
+        #nav-bar {
+            display: flex;
+            list-style: none;
         }
 
         .nav-link {
-            display: block;
-            padding: 1rem;
-            color: #4a5568;
             text-decoration: none;
-            border-bottom: 1px solid #edf2f7;
-            transition: all 0.2s ease;
+            color: #444;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            margin-left: 1rem;
+            transition: color 0.3s ease;
         }
 
         .nav-link:hover {
-            background-color: #f7fafc;
-            color: #3182ce;
-            padding-left: 1.25rem;
+            color: #ff4a5a;
         }
 
-        #main-doc {
-            margin-left: 300px;
-            padding: 2rem 3rem;
+
+        .container {
             max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        .main-section {
+        section {
             margin-bottom: 4rem;
-            scroll-margin-top: 2rem;
+            padding-top: 2rem;
         }
 
-        .main-section header {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #2d3748;
+        #hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        #hero h2 {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            border-bottom: 2px solid #edf2f7;
-            padding-bottom: 0.5rem;
         }
 
-        p {
-            margin-bottom: 1.25rem;
-            color: #4a5568;
-            text-align: justify;
+
+        #form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 2rem auto 0 auto;
         }
 
-        code {
-            display: block;
-            white-space: pre-wrap;
-            background-color: #f7fafc;
-            color: #c53030;
-            padding: 1rem;
-            border-left: 4px solid #3182ce;
-            border-radius: 0 4px 4px 0;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-            margin: 1.5rem 0;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        #email {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
         }
 
-        ul {
-            margin: 1rem 0 1.5rem 2rem;
+        #submit {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #ff4a5a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        li {
+        #submit:hover {
+            background-color: #e03b4a;
+        }
+
+ 
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        #video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .feature-item h3 {
             margin-bottom: 0.5rem;
-            color: #4a5568;
+            color: #ff4a5a;
         }
 
-        @media (max-width: 768px) {
-            #navbar {
-                position: relative;
-                width: 100%;
-                height: auto;
-                max-height: 250px;
-                border-right: none;
-                border-bottom: 2px solid #e2e8f0;
+        @media (min-width: 768px) {
+            .features-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            #form {
+                flex-direction: row;
+                max-width: 500px;
             }
 
-            #main-doc {
-                margin-left: 0;
-                padding: 1.5rem;
+            #submit {
+                width: auto;
+                white-space: nowrap;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav id="navbar">
-        <header>JS Core Framework</header>
+    <header id="header">
 
-        <a class="nav-link" href="#Introduction">Introduction</a>
-        <a class="nav-link" href="#Variable_Declaration">Variable Declaration</a>
-        <a class="nav-link" href="#Conditional_Logic">Conditional Logic</a>
-        <a class="nav-link" href="#Function_Scope">Function Scope</a>
-        <a class="nav-link" href="#Array_Methods">Array Methods</a>
-    </nav>
+        <img id="header-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150" alt="Premium Audio Brand Minimalist Grid Logo Asset">
+        
 
-    <main id="main-doc">
+        <nav id="nav-bar">
 
-        <section class="main-section" id="Introduction">
-            <header>Introduction</header>
-            <!-- Requirement 9: Functional explanatory block paragraph -->
-            <p>JavaScript is a cross-platform, object-oriented scripting language used to make webpages interactive. It provides programmatic access to the Document Object Model (DOM), allowing developers to modify structural states, process asynchronous requests, and manipulate localized UI components dynamically.</p>
-            <p>By executing inside client application engine runtimes, it removes heavy computational transactional loads away from server frameworks, increasing response delivery metrics across modern web environments.</p>
-            <!-- Requirement 10: Technical display sample notation array -->
-            <code>console.log("System initialized successfully.");</code>
+            <a class="nav-link" href="#features">Features</a>
+            <a class="nav-link" href="#showcase">Showcase</a>
+            <a class="nav-link" href="#subscribe">Newsletter</a>
+        </nav>
+
+    </header>
+
+    <main class="container">
+
+        <section id="features">
+            <h2>Why Choose Our Sound Solution?</h2>
+            <div class="features-list">
+                <div class="feature-item">
+                    <h3>Premium Audio</h3>
+                    <p>Experience studio-grade listening quality dynamically optimized by algorithmic telemetry pipelines.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>High Battery Life</h3>
+                    <p>Enjoy up to 40 consecutive baseline execution playback hours on a single 15-minute quick charge matrix.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Smart ANC</h3>
+                    <p>Adaptive noise cancellation isolating ambient structural sonic sound frequencies instantly.</p>
+                </div>
+            </div>
         </section>
 
-        <section class="main-section" id="Variable_Declaration">
-            <header>Variable Declaration</header>
-            <p>Modern applications declare data bindings utilizing explicit scope assignment operations. Choosing the correct structural storage token directly alters how memory blocks references handle modifications during iterative passes.</p>
-            <p>Understanding reference assignment strategies assists teams in maintaining clean data structures across applications:</p>
-            <!-- Requirement 11: Nested bullet pointers documenting specific framework features -->
-            <ul>
-                <li><strong>let:</strong> Block-scoped tracking variables open to subsequent memory mutations.</li>
-                <li><strong>const:</strong> Immutably bound references that preserve initial runtime configuration structures.</li>
-                <li><strong>var:</strong> Legacy variables subjected to global or function hoisting cycles.</li>
-            </ul>
-            <code>const systemThreshold = 450;
-             let currentReadout = 112;</code>
+        <section id="showcase">
+            <h2>See It In Action</h2>
+            <div class="video-wrapper">
+                <iframe id="video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Product Video Presentation"></iframe>
+            </div>
         </section>
 
-        <section class="main-section" id="Conditional_Logic">
-            <header>Conditional Logic</header>
-            <p>Control flow directives evaluate structured mathematical expressions against Boolean rules to isolate alternative runtime routes. Clear evaluation matrices optimize engine execution pathways during intensive system loops.</p>
-            <p>Using logical conditional parameters allows processing threads to skip heavy operational structures when inputs fail boundary metrics:</p>
-            <code>if (currentReadout &gt; systemThreshold) {
-    triggerAlarm();
-} else {
-    logStatus();
-}</code>
-        </section>
+        <section id="subscribe">
+            <div id="hero">
+                <h2>Sound Uncompromised.</h2>
+                <p>Register below to receive release notifications and access exclusive promotional pricing channels.</p>
+            </div>
 
-        <section class="main-section" id="Function_Scope">
-            <header>Function Scope</header>
-            <p>Functions act as isolated computational environments designed to process specific actions on target parameters. Encapsulating isolated logic inside standalone operational components restricts memory context leakage across application modules.</p>
-            <p>Modern arrow functions provide clean inline configurations while binding the execution scope to the surrounding context naturally:</p>
-            <code>const processData = (input) =&gt; {
-    return input * 2.54;
-};</code>
-        </section>
+            <form id="form" action="https://www.freecodecamp.org/email-submit">
 
-        <section class="main-section" id="Array_Methods">
-            <header>Array Methods</header>
-            <p>Array objects provide robust collection features optimized for processing sequentially structured tracking datasets. Chaining programmatic collection modifiers eliminates mutable state tracking variables, yielding self-contained operational pipelines.</p>
-            <p>Common collection patterns enable complex operations through highly expressive syntax lines:</p>
-            <ul>
-                <li>Map yields completely new transformed projection records.</li>
-                <li>Filter discards unmatched element entries seamlessly.</li>
-                <li>Reduce consolidates complex matrices down into a singular value.</li>
-            </ul>
-            <code>const numbers = [1, 2, 3, 4, 5];
-             const doubledEvens = numbers
-             .filter(n =&gt; n % 2 === 0)
-             .map(n =&gt; n * 2);</code>
+                <input id="email" type="email" name="email" placeholder="Enter your email address" required>
+
+                <input id="submit" type="submit" value="Get Started">
+                
+            </form>
         </section>
 
     </main>
