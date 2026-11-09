@@ -1,3 +1,1 @@
-# Playing Cards Page - 05
-
-A web page displaying interactive playing cards, demonstrating CSS grid/flexbox layouts, card designs, and visual styling.
+A playing cards layout created with HTML and CSS, demonstrating Flexbox, alignment, spacing, and card styling.
