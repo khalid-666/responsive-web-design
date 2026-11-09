@@ -1,186 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Inventory</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Documentation Matrix</title>
+    <style>
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #0f172a;
-      color: #f8fafc;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.05em;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #fcfcfc;
+            display: flex;
+            flex-direction: column;
+        }
 
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 900px;
-      background-color: #1e293b;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    }
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100vh;
+            background-color: #ffffff;
+            border-right: 2px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
 
-    th, td {
-      padding: 1rem 1.5rem;
-      text-align: left;
-    }
+        #navbar header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1a202c;
+        }
 
-    th {
-      background-color: #0f172a;
-      color: #94a3b8;
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-    }
+        .nav-link {
+            display: block;
+            padding: 1rem;
+            color: #4a5568;
+            text-decoration: none;
+            border-bottom: 1px solid #edf2f7;
+            transition: all 0.2s ease;
+        }
 
-    tr[class="read"] {
-      background-image: linear-gradient(to right, #1e293b, #14532d);
-    }
+        .nav-link:hover {
+            background-color: #f7fafc;
+            color: #3182ce;
+            padding-left: 1.25rem;
+        }
 
-    tr[class="to-read"] {
-      background-image: linear-gradient(to right, #1e293b, #581c87);
-    }
+        #main-doc {
+            margin-left: 300px;
+            padding: 2rem 3rem;
+            max-width: 1000px;
+        }
 
-    tr[class="in-progress"] {
-      background-image: linear-gradient(to right, #1e293b, #1c3d5a);
-    }
+        .main-section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 2rem;
+        }
 
-    span {
-      display: inline-block;
-    }
+        .main-section header {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 0.5rem;
+        }
 
-    tr[class="to-read"] span[class="status"] {
-      border: 1px solid #c084fc;
-      background-image: linear-gradient(to bottom, #6b21a8, #3b0764);
-    }
+        p {
+            margin-bottom: 1.25rem;
+            color: #4a5568;
+            text-align: justify;
+        }
 
-    tr[class="read"] span[class="status"] {
-      border: 1px solid #4ade80;
-      background-image: linear-gradient(to bottom, #166534, #064e3b);
-    }
+        code {
+            display: block;
+            white-space: pre-wrap;
+            background-color: #f7fafc;
+            color: #c53030;
+            padding: 1rem;
+            border-left: 4px solid #3182ce;
+            border-radius: 0 4px 4px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            margin: 1.5rem 0;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
 
-    tr[class="in-progress"] span[class="status"] {
-      border: 1px solid #38bdf8;
-      background-image: linear-gradient(to bottom, #0369a1, #0c4a6e);
-    }
+        ul {
+            margin: 1rem 0 1.5rem 2rem;
+        }
 
-    span[class="status"], span[class^="rate"] {
-      height: 24px;
-      width: 90px;
-      padding: 4px;
-      text-align: center;
-      font-size: 0.85rem;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
+        li {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
 
-    span[class^="rate"] > span {
-      border: 1px solid #64748b;
-      border-radius: 50%;
-      margin: 0 2px;
-      height: 12px;
-      width: 12px;
-      background-color: #334155;
-    }
+        @media (max-width: 768px) {
+            #navbar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                max-height: 250px;
+                border-right: none;
+                border-bottom: 2px solid #e2e8f0;
+            }
 
-    span[class~="one"] span:first-of-type {
-      background-image: linear-gradient(to bottom, #fbbf24, #d97706);
-    }
-
-    span[class~="two"] span:nth-of-type(-n+2) {
-      background-image: linear-gradient(to bottom, #fbbf24, #d97706);
-    }
-
-    span[class~="three"] span {
-      background-image: linear-gradient(to bottom, #fbbf24, #d97706);
-    }
-  </style>
+            #main-doc {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Book Inventory</h1>
+    <nav id="navbar">
+        <header>JS Core Framework</header>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Category</th>
-        <th>Status</th>
-        <th>Rate</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="read">
-        <td>The Hobbit</td>
-        <td>J.R.R. Tolkien</td>
-        <td>Fantasy</td>
-        <td><span class="status">Read</span></td>
-        <td>
-          <span class="rate three">
-            <span></span><span></span><span></span>
-          </span>
-        </td>
-      </tr>
-      <tr class="in-progress">
-        <td>Dune</td>
-        <td>Frank Herbert</td>
-        <td>Sci-Fi</td>
-        <td><span class="status">In Progress</span></td>
-        <td>
-          <span class="rate">
-            <span></span><span></span><span></span>
-          </span>
-        </td>
-      </tr>
-      <tr class="to-read">
-        <td>Neuromancer</td>
-        <td>William Gibson</td>
-        <td>Cyberpunk</td>
-        <td><span class="status">To Read</span></td>
-        <td>
-          <span class="rate">
-            <span></span><span></span><span></span>
-          </span>
-        </td>
-      </tr>
-      <tr class="read">
-        <td>Atomic Habits</td>
-        <td>James Clear</td>
-        <td>Self-Help</td>
-        <td><span class="status">Read</span></td>
-        <td>
-          <span class="rate two">
-            <span></span><span></span><span></span>
-          </span>
-        </td>
-      </tr>
-      <tr class="read">
-        <td>The Stranger</td>
-        <td>Albert Camus</td>
-        <td>Philosophy</td>
-        <td><span class="status">Read</span></td>
-        <td>
-          <span class="rate one">
-            <span></span><span></span><span></span>
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        <a class="nav-link" href="#Introduction">Introduction</a>
+        <a class="nav-link" href="#Variable_Declaration">Variable Declaration</a>
+        <a class="nav-link" href="#Conditional_Logic">Conditional Logic</a>
+        <a class="nav-link" href="#Function_Scope">Function Scope</a>
+        <a class="nav-link" href="#Array_Methods">Array Methods</a>
+    </nav>
+
+    <main id="main-doc">
+
+        <section class="main-section" id="Introduction">
+            <header>Introduction</header>
+            <!-- Requirement 9: Functional explanatory block paragraph -->
+            <p>JavaScript is a cross-platform, object-oriented scripting language used to make webpages interactive. It provides programmatic access to the Document Object Model (DOM), allowing developers to modify structural states, process asynchronous requests, and manipulate localized UI components dynamically.</p>
+            <p>By executing inside client application engine runtimes, it removes heavy computational transactional loads away from server frameworks, increasing response delivery metrics across modern web environments.</p>
+            <!-- Requirement 10: Technical display sample notation array -->
+            <code>console.log("System initialized successfully.");</code>
+        </section>
+
+        <section class="main-section" id="Variable_Declaration">
+            <header>Variable Declaration</header>
+            <p>Modern applications declare data bindings utilizing explicit scope assignment operations. Choosing the correct structural storage token directly alters how memory blocks references handle modifications during iterative passes.</p>
+            <p>Understanding reference assignment strategies assists teams in maintaining clean data structures across applications:</p>
+            <!-- Requirement 11: Nested bullet pointers documenting specific framework features -->
+            <ul>
+                <li><strong>let:</strong> Block-scoped tracking variables open to subsequent memory mutations.</li>
+                <li><strong>const:</strong> Immutably bound references that preserve initial runtime configuration structures.</li>
+                <li><strong>var:</strong> Legacy variables subjected to global or function hoisting cycles.</li>
+            </ul>
+            <code>const systemThreshold = 450;
+             let currentReadout = 112;</code>
+        </section>
+
+        <section class="main-section" id="Conditional_Logic">
+            <header>Conditional Logic</header>
+            <p>Control flow directives evaluate structured mathematical expressions against Boolean rules to isolate alternative runtime routes. Clear evaluation matrices optimize engine execution pathways during intensive system loops.</p>
+            <p>Using logical conditional parameters allows processing threads to skip heavy operational structures when inputs fail boundary metrics:</p>
+            <code>if (currentReadout &gt; systemThreshold) {
+    triggerAlarm();
+} else {
+    logStatus();
+}</code>
+        </section>
+
+        <section class="main-section" id="Function_Scope">
+            <header>Function Scope</header>
+            <p>Functions act as isolated computational environments designed to process specific actions on target parameters. Encapsulating isolated logic inside standalone operational components restricts memory context leakage across application modules.</p>
+            <p>Modern arrow functions provide clean inline configurations while binding the execution scope to the surrounding context naturally:</p>
+            <code>const processData = (input) =&gt; {
+    return input * 2.54;
+};</code>
+        </section>
+
+        <section class="main-section" id="Array_Methods">
+            <header>Array Methods</header>
+            <p>Array objects provide robust collection features optimized for processing sequentially structured tracking datasets. Chaining programmatic collection modifiers eliminates mutable state tracking variables, yielding self-contained operational pipelines.</p>
+            <p>Common collection patterns enable complex operations through highly expressive syntax lines:</p>
+            <ul>
+                <li>Map yields completely new transformed projection records.</li>
+                <li>Filter discards unmatched element entries seamlessly.</li>
+                <li>Reduce consolidates complex matrices down into a singular value.</li>
+            </ul>
+            <code>const numbers = [1, 2, 3, 4, 5];
+             const doubledEvens = numbers
+             .filter(n =&gt; n % 2 === 0)
+             .map(n =&gt; n * 2);</code>
+        </section>
+
+    </main>
 
 </body>
 </html>
