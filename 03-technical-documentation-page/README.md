@@ -1,3 +1,1 @@
-# Technical Documentation Page - 03
-
-A technical documentation page featuring sidebar navigation, smooth scrolling, code blocks, and structured technical explanations.
+A technical documentation website built with HTML and CSS, featuring structured content, navigation links, and organized documentation sections.
