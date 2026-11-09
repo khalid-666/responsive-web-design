@@ -1,106 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playing Cards Grid</title>
-    <style>
-        body {
-            background-color: #1a4314; /* Casino table green */
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            margin: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Inventory</title>
+  <style>
 
-        /* Requirements 1, 8, 9, 10, 11: Main parent element styling rules */
-        #playing-cards {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        /* Requirements 3, 12, 13: Core card dimensional constraints and flex structure */
-        .card {
-            width: 150px;
-            height: 220px;
-            background-color: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-sizing: border-box;
-            border: 1px solid #cccccc;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            
-            display: flex;
-            justify-content: space-between;
-        }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.05em;
+    }
 
-        /* Requirement 14: Left column content alignment rule */
-        .left {
-            align-self: flex-start;
-            font-size: 20px;
-            font-weight: bold;
-        }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 900px;
+      background-color: #1e293b;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
 
-        /* Requirements 15, 17, 18: Middle lane alignment, inner flex layout, and direction tracking */
-        .middle {
-            align-self: center;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-size: 32px;
-        }
+    th, td {
+      padding: 1rem 1.5rem;
+      text-align: left;
+    }
 
-        /* Requirement 16: Right column alignment rules */
-        .right {
-            align-self: flex-end;
-            font-size: 20px;
-            font-weight: bold;
-            transform: rotate(180deg); /* Optional visual utility flip for classic card styling */
-        }
+    th {
+      background-color: #0f172a;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
 
-        /* Decorative suit colors */
-        .red-suit { color: #d11a2a; }
-        .black-suit { color: #000000; }
-    </style>
+    tr[class="read"] {
+      background-image: linear-gradient(to right, #1e293b, #14532d);
+    }
+
+    tr[class="to-read"] {
+      background-image: linear-gradient(to right, #1e293b, #581c87);
+    }
+
+    tr[class="in-progress"] {
+      background-image: linear-gradient(to right, #1e293b, #1c3d5a);
+    }
+
+    span {
+      display: inline-block;
+    }
+
+    tr[class="to-read"] span[class="status"] {
+      border: 1px solid #c084fc;
+      background-image: linear-gradient(to bottom, #6b21a8, #3b0764);
+    }
+
+    tr[class="read"] span[class="status"] {
+      border: 1px solid #4ade80;
+      background-image: linear-gradient(to bottom, #166534, #064e3b);
+    }
+
+    tr[class="in-progress"] span[class="status"] {
+      border: 1px solid #38bdf8;
+      background-image: linear-gradient(to bottom, #0369a1, #0c4a6e);
+    }
+
+    span[class="status"], span[class^="rate"] {
+      height: 24px;
+      width: 90px;
+      padding: 4px;
+      text-align: center;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    span[class^="rate"] > span {
+      border: 1px solid #64748b;
+      border-radius: 50%;
+      margin: 0 2px;
+      height: 12px;
+      width: 12px;
+      background-color: #334155;
+    }
+
+    span[class~="one"] span:first-of-type {
+      background-image: linear-gradient(to bottom, #fbbf24, #d97706);
+    }
+
+    span[class~="two"] span:nth-of-type(-n+2) {
+      background-image: linear-gradient(to bottom, #fbbf24, #d97706);
+    }
+
+    span[class~="three"] span {
+      background-image: linear-gradient(to bottom, #fbbf24, #d97706);
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Requirement 1: Main parent deck root element -->
-    <main id="playing-cards">
+  <h1>Book Inventory</h1>
 
-        <!-- Requirement 2: Card Item 1 (Ace of Hearts) -->
-        <div class="card red-suit">
-            <!-- Requirements 4, 5, 6, 7: Exactly three designated layout child elements -->
-            <div class="left">A &hearts;</div>
-            <div class="middle">&hearts;</div>
-            <div class="right">A &hearts;</div>
-        </div>
-
-        <!-- Requirement 2: Card Item 2 (Three of Spades) -->
-        <div class="card black-suit">
-            <!-- Requirements 4, 5, 6, 7: Exactly three designated layout child elements -->
-            <div class="left">3 &spades;</div>
-            <div class="middle">
-                <div>&spades;</div>
-                <div>&spades;</div>
-                <div>&spades;</div>
-            </div>
-            <div class="right">3 &spades;</div>
-        </div>
-
-        <!-- Requirement 2: Card Item 3 (Two of Diamonds) -->
-        <div class="card red-suit">
-            <!-- Requirements 4, 5, 6, 7: Exactly three designated layout child elements -->
-            <div class="left">2 &diams;</div>
-            <div class="middle">
-                <div>&diams;</div>
-                <div>&diams;</div>
-            </div>
-            <div class="right">2 &diams;</div>
-        </div>
-
-    </main>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="read">
+        <td>The Hobbit</td>
+        <td>J.R.R. Tolkien</td>
+        <td>Fantasy</td>
+        <td><span class="status">Read</span></td>
+        <td>
+          <span class="rate three">
+            <span></span><span></span><span></span>
+          </span>
+        </td>
+      </tr>
+      <tr class="in-progress">
+        <td>Dune</td>
+        <td>Frank Herbert</td>
+        <td>Sci-Fi</td>
+        <td><span class="status">In Progress</span></td>
+        <td>
+          <span class="rate">
+            <span></span><span></span><span></span>
+          </span>
+        </td>
+      </tr>
+      <tr class="to-read">
+        <td>Neuromancer</td>
+        <td>William Gibson</td>
+        <td>Cyberpunk</td>
+        <td><span class="status">To Read</span></td>
+        <td>
+          <span class="rate">
+            <span></span><span></span><span></span>
+          </span>
+        </td>
+      </tr>
+      <tr class="read">
+        <td>Atomic Habits</td>
+        <td>James Clear</td>
+        <td>Self-Help</td>
+        <td><span class="status">Read</span></td>
+        <td>
+          <span class="rate two">
+            <span></span><span></span><span></span>
+          </span>
+        </td>
+      </tr>
+      <tr class="read">
+        <td>The Stranger</td>
+        <td>Albert Camus</td>
+        <td>Philosophy</td>
+        <td><span class="status">Read</span></td>
+        <td>
+          <span class="rate one">
+            <span></span><span></span><span></span>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 </body>
 </html>
